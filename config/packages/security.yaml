@@ -5,22 +5,23 @@ security:
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
+        back_user_provider:
             entity:
                 class: App\Entity\BackUser
                 property: email
+                
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             lazy: true
-            provider: app_user_provider
+            provider: back_user_provider
             logout:
-                path: /logout
+                path: /back/logout
             form_login:
-                login_path: app_back_login
-                check_path: app_back_login
+                login_path: back_login
+                check_path: back_login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
